@@ -14,6 +14,7 @@ public interface ArgumentType {
     public static final ArgumentType STRING = new StringArgument();
     public static final ArgumentType DOUBLE = new DoubleArgument();
     public static final ArgumentType INTEGER = new IntegerArgument();
+    public static final ArgumentType LONG = new LongArgument();
     public static final ArgumentType BOOLEAN = new BooleanArgument();
     public static final ArgumentType MULTI_STRING = new MultiStringArgument();
 
