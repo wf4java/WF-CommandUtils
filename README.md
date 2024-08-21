@@ -9,7 +9,7 @@
   </dependency>
 ```
 
-## Example
+## Example:
 ```java
 CommandHandler commandHandler = new CommandHandler();
 
