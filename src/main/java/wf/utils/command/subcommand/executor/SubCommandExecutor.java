@@ -37,8 +37,7 @@ public class SubCommandExecutor {
 
     public Object[] calculate(CommandSender sender, String[] args){
         if(getMinObligatorilyArgs() > args.length){
-            sender.sendMessage("Write all arguments!");
-            sender.sendMessage(getArgumentsText());
+            sender.sendMessage("Write all arguments!" + "\n" + getArgumentsText());
             return null;
         }
 
@@ -48,8 +47,7 @@ public class SubCommandExecutor {
             Argument argument = lastArgumentMulti ? (arguments.length <= i ? arguments[arguments.length - 1] : arguments[i]) : arguments[i];
             if(args.length > i){
                 if(!argument.typeIsRight(sender, args, args[i])){
-                    sender.sendMessage(argument.getType().getMessage());
-                    sender.sendMessage(getWrongArgumentText(i));
+                    sender.sendMessage(argument.getType().getMessage() + "\n" + getWrongArgumentText(i));
                     return null;
                 }
                 objects[i] = argument.get(sender, args, args[i]);
