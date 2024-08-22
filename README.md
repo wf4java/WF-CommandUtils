@@ -14,7 +14,7 @@
 StringCommandHandler commandHandler = new StringCommandHandler();
 
 commandHandler.addSubcommand(
-        SubCommand.builder()
+        SubCommand.builder(String.class)
                 .setCommand("set.data")
                 .setArguments(
                         new Argument("number", ArgumentType.INTEGER),
@@ -29,7 +29,7 @@ commandHandler.addSubcommand(
 
 
 commandHandler.addSubcommand(
-        SubCommand.builder()
+        SubCommand.builder(String.class)
                 .setCommand("remove.data")
                 .setArguments(
                         new Argument("number", ArgumentType.INTEGER)
