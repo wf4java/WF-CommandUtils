@@ -6,19 +6,19 @@ import wf.utils.command.model.TriConsumer;
 import wf.utils.command.subcommand.executor.Argument;
 import wf.utils.command.subcommand.executor.SubCommandExecutor;
 
-public class SubCommand {
+public class SubCommand<T> {
 
     private String command;
     private String permission;
     private SubCommandExecutor subCommandExecutor;
-    private TriConsumer<CommandSender, String, Object[]> runnable;
+    private TriConsumer<CommandSender, T, Object[]> runnable;
 
 
     public SubCommand() {
 
     }
 
-    public SubCommand(String command, String permission, Argument[] arguments, TriConsumer<CommandSender, String, Object[]> runnable) {
+    public SubCommand(String command, String permission, Argument[] arguments, TriConsumer<CommandSender, T, Object[]> runnable) {
         this.command = command;
         this.permission = permission;
         this.runnable = runnable;
@@ -26,7 +26,7 @@ public class SubCommand {
     }
 
 
-    public void onCommand(CommandSender sender, String command, String[] args, int argsPosition) {
+    public void onCommand(CommandSender sender, T t, String[] args, int argsPosition) {
         if (!checkPermission(sender)) {
             sender.sendMessage("You not have permission!");
             return;
@@ -34,7 +34,7 @@ public class SubCommand {
 
         Object[] output = subCommandExecutor.calculate(sender, args, argsPosition);
         if (output == null) return;
-        runnable.accept(sender, command, output);
+        runnable.accept(sender, t, output);
     }
 
 
@@ -46,8 +46,8 @@ public class SubCommand {
     }
 
 
-    public static SubCommandBuilder builder() {
-        return new SubCommandBuilder();
+    public static <T> SubCommandBuilder<T> builder(Class<T> type) {
+        return new SubCommandBuilder<>();
     }
 
     public String getPermission() {
@@ -66,11 +66,11 @@ public class SubCommand {
         this.subCommandExecutor = subCommandExecutor;
     }
 
-    public TriConsumer<CommandSender, String, Object[]> getRunnable() {
+    public TriConsumer<CommandSender, T, Object[]> getRunnable() {
         return runnable;
     }
 
-    public void setRunnable(TriConsumer<CommandSender, String, Object[]> runnable) {
+    public void setRunnable(TriConsumer<CommandSender, T, Object[]> runnable) {
         this.runnable = runnable;
     }
 

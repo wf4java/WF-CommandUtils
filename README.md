@@ -5,13 +5,13 @@
   <dependency>
     <groupId>io.github.wf4java</groupId>
     <artifactId>WF-CommandUtils</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
   </dependency>
 ```
 
 ## Example:
 ```java
-CommandHandler commandHandler = new CommandHandler();
+StringCommandHandler commandHandler = new StringCommandHandler();
 
 commandHandler.addSubcommand(
         SubCommand.builder()

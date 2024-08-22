@@ -1,4 +1,5 @@
-import wf.utils.command.handler.CommandHandler;
+
+import wf.utils.command.listener.StringCommandHandler;
 import wf.utils.command.subcommand.SubCommand;
 import wf.utils.command.subcommand.executor.Argument;
 import wf.utils.command.subcommand.executor.types.ArgumentType;
@@ -7,10 +8,10 @@ public class Test {
 
 
     public static void main(String[] args) {
-        CommandHandler commandHandler = new CommandHandler();
+        StringCommandHandler commandHandler = new StringCommandHandler();
 
         commandHandler.addSubcommand(
-                SubCommand.builder()
+                SubCommand.builder(String.class)
                         .setCommand("set.data")
                         .setArguments(
                                 new Argument("number", ArgumentType.INTEGER),
@@ -25,7 +26,7 @@ public class Test {
 
 
         commandHandler.addSubcommand(
-                SubCommand.builder()
+                SubCommand.builder(String.class)
                         .setCommand("remove.data")
                         .setArguments(
                                 new Argument("number", ArgumentType.INTEGER)

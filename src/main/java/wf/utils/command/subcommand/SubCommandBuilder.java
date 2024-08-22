@@ -7,38 +7,38 @@ import wf.utils.command.model.TriConsumer;
 import wf.utils.command.subcommand.executor.Argument;
 
 
-public class SubCommandBuilder {
+public class SubCommandBuilder<T> {
 
     private String command;
     private String permission;
 
-    private TriConsumer<CommandSender, String, Object[]> runnable;
+    private TriConsumer<CommandSender, T, Object[]> runnable;
     private Argument[] arguments;
 
 
-    public SubCommandBuilder setPermission(String permission) {
+    public SubCommandBuilder<T> setPermission(String permission) {
         this.permission = permission;
         return this;
     }
 
-    public SubCommandBuilder setRunnable(TriConsumer<CommandSender, String, Object[]> runnable) {
+    public SubCommandBuilder<T> setRunnable(TriConsumer<CommandSender, T, Object[]> runnable) {
         this.runnable = runnable;
         return this;
     }
 
 
 
-    public SubCommandBuilder setArguments(Argument... arguments) {
+    public SubCommandBuilder<T> setArguments(Argument... arguments) {
         this.arguments = arguments;
         return this;
     }
 
-    public SubCommandBuilder setCommand(String command) {
+    public SubCommandBuilder<T> setCommand(String command) {
         this.command = command;
         return this;
     }
 
-    public SubCommand build() {
+    public SubCommand<T> build() {
         return new SubCommand(command, permission, arguments, runnable);
     }
 

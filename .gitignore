@@ -40,3 +40,5 @@ build/
 /.idea/encodings.xml
 /.idea/misc.xml
 /.idea/uiDesigner.xml
+/.idea/markdown.xml
+/.idea/vcs.xml
